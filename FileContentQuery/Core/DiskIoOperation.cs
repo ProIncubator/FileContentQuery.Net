@@ -1,11 +1,10 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using FileContentQuery.Models;
 namespace FileContentQuery.Core
 {
-    using System;
-    using System.IO;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-    using FileContentQuery.Models;
-
     public class DiskIoOperation
     {
         private int ADD_LENGTH = 10;
