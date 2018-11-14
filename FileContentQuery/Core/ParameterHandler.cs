@@ -55,7 +55,7 @@ namespace FileContentQuery.Core
         }
         public T ToModel<T>(String args) where T : class
         {
-            return this.ToModel<T>(args.Split(" "));
+            return this.ToModel<T>(args.Split(' '));
         }
         public T ToModel<T>(String[] args) where T : class
         {

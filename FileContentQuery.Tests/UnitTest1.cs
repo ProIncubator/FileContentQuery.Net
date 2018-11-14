@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.IO;
 
 namespace FileContentQuery.Tests
@@ -10,10 +9,22 @@ namespace FileContentQuery.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            FileInfo fi = new FileInfo(@"D:\Software\CentOS-7-x86_64-Everything-1611.iso");
-            using (FileStream fs = fi.OpenRead())
+            FileInfo reader = new FileInfo(@"E:\Windows10-64.iso");
+            FileInfo writer = new FileInfo(@"E:\temp.iso");
+            byte[] buffer = new byte[1024];
+            int seek = 0;
+            int readLength = 0;
+            using (FileStream fs = reader.OpenRead())
             {
-                //fs.Seek
+                while ((readLength = fs.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    using (FileStream write = writer.OpenWrite())
+                    {
+                        write.Seek(seek, SeekOrigin.Current);
+                        write.Write(buffer, 0, readLength);
+                    }
+                    seek += readLength;
+                }
             }
         }
     }
