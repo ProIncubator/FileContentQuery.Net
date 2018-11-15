@@ -13,7 +13,7 @@ namespace FileContentQuery
         static void Main(string[] args)
         {
             var handler = new ParameterHandler();
-            var parameters = handler.ToModel<QueryParameters>(@"--include (cs|json)$ --exclude obj  --verbose --match (\d+\.){2,3}\d+ -dir ./");
+            var parameters = handler.ToModel<QueryParameters>(@"--include (cs|java)$ --exclude obj --verbose --match (\d+\.){2,3}\d+ -dir ./");
             DiskIoOperation operate = new DiskIoOperation(parameters);
             operate.Print();
             // Directory.GetFiles("./").Select(f => new FileInfo(f)).Select(f => f.FullName).ToList().ForEach(Console.WriteLine);
